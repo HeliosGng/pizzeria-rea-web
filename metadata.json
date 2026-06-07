@@ -1,0 +1,6 @@
+{
+  "name": "pizzeria-rea",
+  "description": "Faqja zyrtare e Pizzerise rea ne Kashar, Shqiperi. Porositni pica te shijshme ne Wolt, merrni udhezimet ose na telefononi direkt.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
