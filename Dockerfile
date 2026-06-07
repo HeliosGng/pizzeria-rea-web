@@ -2,7 +2,8 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+# Force npm to install all devDependencies even if the runner sets NODE_ENV=production
+RUN npm ci --include=dev
 COPY . .
 RUN npm run build
 
