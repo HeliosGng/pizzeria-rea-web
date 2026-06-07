@@ -2,8 +2,8 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
-# Force npm to install all devDependencies even if the runner sets NODE_ENV=production
-RUN npm ci --include=dev
+# Use npm install to ensure package-lock is updated and verified on the container architecture
+RUN npm install
 COPY . .
 RUN npm run build
 
@@ -14,7 +14,7 @@ ENV NODE_ENV=production
 
 # Install only production dependencies
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --omit=dev
 
 # Copy built frontend assets and bundled backend server
 COPY --from=build /app/dist ./dist
